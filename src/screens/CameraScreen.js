@@ -7,13 +7,13 @@ import { useNavigation } from '@react-navigation/native'
 const CameraScreen = () => {
 
 
-    const [flipCamera, setFlipCamera] = useState(false)
+    const [isFrontCamera, setIsFrontCamera] = useState(false)
     const [isFlashon, setIsFlashon] = useState(true)
     const [isLongPressed, setIsLongPressed] = useState(false)
 
 
 
-    const device = useCameraDevice(flipCamera ? "front" : "back")
+    const device = useCameraDevice(isFrontCamera ? "front" : "back")
 
 
     const cameraRef = useRef()
@@ -24,8 +24,10 @@ const CameraScreen = () => {
 
     async function checkPermission() {
         let cameraPermission = await Camera.requestCameraPermission()
+        console.log("🚀 ~ file: CameraScreen.js:27 ~ checkPermission ~ cameraPermission:", cameraPermission)
         let microphonePermission = await Camera.requestMicrophonePermission()
         cameraPermission = await Camera.getCameraPermissionStatus();
+        console.log("🚀 ~ file: CameraScreen.js:30 ~ checkPermission ~ cameraPermission:", cameraPermission)
         microphonePermission = await Camera.requestMicrophonePermission();
 
         if (cameraPermission === 'denied' || microphonePermission === 'denied') {
@@ -47,7 +49,7 @@ const CameraScreen = () => {
         if (cameraRef.current && cameraRef.current !== null) {
             try {
                 const data = await cameraRef.current?.takePhoto({
-                    flash: isFlashon && !flipCamera ? "on" : "off",
+                    flash: isFlashon && !isFrontCamera ? "on" : "off",
                 })
                 console.log("🚀 ~ file: CameraScreen.js:64 ~ capturePhoto ~ data:", data)
             }
@@ -61,7 +63,7 @@ const CameraScreen = () => {
         if (cameraRef.current && cameraRef.current !== null) {
             try {
                 await cameraRef.current?.startRecording({
-                    flash: isFlashon && !flipCamera ? "on" : "off",
+                    flash: isFlashon && !isFrontCamera ? "on" : "off",
                     onRecordingFinished: (video) => {
                         console.log("🚀 ~ file: CameraScreen.js:66 ~ startVideoRecording ~ video:", video)
                     },
@@ -106,7 +108,7 @@ const CameraScreen = () => {
                 }
 
                 <TouchableOpacity
-                    onPress={() => { setFlipCamera((prevFliped) => !prevFliped) }}
+                    onPress={() => { setIsFrontCamera((isFrontCamera) => !isFrontCamera) }}
                     style={{ position: 'absolute', bottom: 20, right: 20 }}>
                     <View style={{ width: 50, height: 50, borderRadius: 50, backgroundColor: colors.white, }} />
                 </TouchableOpacity>
