@@ -34,11 +34,21 @@ function groupedDays(messages) {
 
 function generateItems(messages) {
   const days = groupedDays(messages);
-  const sortedDays = Object.keys(days).sort((x, y) => moment(y, 'YYYY-MM-DD').unix() - moment(x, 'YYYY-MM-DD').unix());
+  // console.log("🚀 ~ file: generateItems.js:37 ~ generateItems ~ days:", JSON.stringify(days))
+  const sortedDays = Object.keys(days).sort((x, y) => moment(y, 'YYYY-MM-DD').unix() - moment(x, 'YYYY-MM-DD').unix())
+  // console.log("🚀 ~ file: generateItems.js:39 ~ generateItems ~ sortedDays:", JSON.stringify(sortedDays))
   const items = sortedDays.reduce((acc, date) => {
-    const sortedMessages = days[date].sort((x, y) => new Date(y.createdAt) - new Date(x.createdAt));
+    const sortedMessages = days[date]
+      .sort((x, y) => new Date(y.createdAt) - new Date(x.createdAt))
+      .map((message, index, array) => ({
+        ...message,
+        index: array.length - index - 1, // Invert the index
+        isFirstMessage: index === array.length - 1, // Check if it's the first message
+        isLastMessage: index === 0, // Check if it's the last message
+      }))
+    // console.log("🚀 ~ file: generateItems.js:42 ~ items ~ sortedMessages:", JSON.stringify(sortedMessages))
     const unique = uuid.v4()
-    return acc.concat([...sortedMessages, { type: 'day', date, _id: unique, messageId: unique }]);
+    return acc.concat([...sortedMessages, { type: 'day', date, _id: unique, messageId: unique }])
   }, []);
   return items;
 }
