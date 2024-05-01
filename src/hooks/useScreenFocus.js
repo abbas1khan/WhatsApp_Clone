@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { debounce } from 'lodash';
 
-const useScreenFocus = (callback, debounceTime) => {
+const useScreenFocus = (callback = () => { }, debounceTime) => {
     const navigation = useNavigation();
 
     useEffect(() => {
@@ -22,11 +22,7 @@ const useScreenFocus = (callback, debounceTime) => {
                 blurUnsubscribe();
             };
         } else {
-            const unsubscribe = navigation.addListener('focus', () => {
-                if (callback) {
-                    callback();
-                }
-            });
+            const unsubscribe = navigation.addListener('focus', () => callback())
 
             return () => {
                 unsubscribe();
