@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import ChatSpecificScreen from '../screens/ChatSpecificScreen';
 import AddNewChatScreen from '../screens/AddNewChatScreen';
@@ -31,7 +31,37 @@ const MainAppNavigation = () => {
     return (
         <Stack.Navigator
             screenOptions={{
-                headerShown: false, animation: 'slide_from_right', detachPreviousScreen: false,
+                headerShown: false,
+                // animation: 'slide_from_right',
+                detachPreviousScreen: false,
+                ...TransitionPresets.SlideFromRightIOS, // Use SlideFromRightIOS transition preset
+                cardStyleInterpolator: ({ current, layouts }) => ({
+                    cardStyle: {
+                        transform: [
+                            {
+                                translateX: current.progress.interpolate({
+                                    inputRange: [0, 1],
+                                    outputRange: [layouts.screen.width, 0],
+                                }),
+                            },
+                        ],
+                    },
+                    gestureDirection: 'horizontal',
+                    transitionSpec: {
+                        open: {
+                            animation: 'timing',
+                            config: {
+                                duration: 100, // Faster duration for faster transition
+                            },
+                        },
+                        close: {
+                            animation: 'timing',
+                            config: {
+                                duration: 100, // Faster duration for faster transition
+                            },
+                        },
+                    },
+                }),
             }}
         >
             <Stack.Screen name="HomeScreen" component={HomeScreen} />

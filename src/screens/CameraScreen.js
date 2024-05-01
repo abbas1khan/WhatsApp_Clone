@@ -24,10 +24,8 @@ const CameraScreen = () => {
 
     async function checkPermission() {
         let cameraPermission = await Camera.requestCameraPermission()
-        console.log("🚀 ~ file: CameraScreen.js:27 ~ checkPermission ~ cameraPermission:", cameraPermission)
         let microphonePermission = await Camera.requestMicrophonePermission()
         cameraPermission = await Camera.getCameraPermissionStatus();
-        console.log("🚀 ~ file: CameraScreen.js:30 ~ checkPermission ~ cameraPermission:", cameraPermission)
         microphonePermission = await Camera.requestMicrophonePermission();
 
         if (cameraPermission === 'denied' || microphonePermission === 'denied') {

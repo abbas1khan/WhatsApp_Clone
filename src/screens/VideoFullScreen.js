@@ -17,6 +17,7 @@ import { deleteMessage } from '../redux/ChatRosterSlice';
 import { LinearGradient } from 'expo-linear-gradient';
 import { saveMedia, shareMedia } from '../services/ChatHelper';
 import { formatTime } from '../utils/Helper';
+import useIsFocused from '../hooks/useIsFocused';
 
 let disabled = false
 
@@ -58,7 +59,7 @@ const VideoFullScreen = () => {
     const navigation = useNavigation()
     const { navigate } = useNavigation()
     const dispatch = useDispatch()
-
+    const focus = useIsFocused()
 
 
 
@@ -169,7 +170,9 @@ const VideoFullScreen = () => {
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.black, }}>
-            <StatusBar backgroundColor={showIcons ? colors.videoFullScreenHeaderBackground : colors.black} barStyle={showIcons ? "light-content" : "dark-content"} />
+            {focus ?
+                <StatusBar backgroundColor={showIcons ? colors.videoFullScreenHeaderBackground : colors.black} barStyle={showIcons ? "light-content" : "dark-content"} />
+                : null}
 
             <Video
                 source={{ uri: item?.uri }}
