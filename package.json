@@ -14,6 +14,7 @@
     "install-expo-modules": "^0.8.1",
     "react": "18.2.0",
     "react-native": "0.73.7",
+    "react-native-swipe-list-view": "^3.2.9",
     "react-native-vision-camera": "^4.0.1"
   },
   "devDependencies": {
