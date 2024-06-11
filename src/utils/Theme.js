@@ -37,7 +37,7 @@ export const colors = {
 
     // home
     header: "#1f2c34",
-    background: "#121b22",
+    background: "#0b141b",
     createNewChatButton: "#00a884",
 
 

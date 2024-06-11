@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useRef } from 'react'
-import { colors } from '../utils/Theme'
+import { colors, fontFamily } from '../utils/Theme'
 import ChatCard from '../components/ChatCard'
 import DraggableFlatList from "react-native-draggable-flatlist";
 import useScreenFocus from '../hooks/useScreenFocus'
@@ -43,7 +43,7 @@ const HomeScreen = () => {
 
 
     useScreenFocus(() => {
-        NavigationBar.setBackgroundColorAsync(colors.header);
+        NavigationBar.setBackgroundColorAsync(colors.background);
         NavigationBar.setButtonStyleAsync("light");
     })
 
@@ -51,8 +51,8 @@ const HomeScreen = () => {
         <View style={{ flex: 1, backgroundColor: colors.background, }}>
 
             {/* ------------------------- Header ------------------------ */}
-            <View style={{ height: 56, paddingLeft: 16, paddingRight: 12, backgroundColor: colors.header, flexDirection: 'row', alignItems: 'center', justifyContent: "space-between", }}>
-                <Text style={{ fontSize: 22, color: colors.white }}>
+            <View style={{ height: 56, paddingLeft: 16, paddingRight: 12, flexDirection: 'row', alignItems: 'center', justifyContent: "space-between", }}>
+                <Text style={{ fontSize: 24, color: colors.white, fontFamily: fontFamily.medium }}>
                     WhatsApp
                 </Text>
 

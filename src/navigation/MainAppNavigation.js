@@ -10,6 +10,8 @@ import { useAppDispatch } from '../hooks/useAppDispatch';
 import { updateAppTheme } from '../redux/ChatRosterSlice';
 import { useSelector } from 'react-redux';
 import { useColorScheme } from 'react-native';
+import * as NavigationBar from 'expo-navigation-bar';
+import { colors } from '../utils/Theme';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +20,12 @@ const MainAppNavigation = () => {
     const themeData = useSelector((state) => state.chatRoster.themeData)
     const dispatch = useAppDispatch()
     const deviceTheme = useColorScheme()
+
+
+    async function setNavigationBarColor() {
+        NavigationBar.setBackgroundColorAsync(colors.background);
+        NavigationBar.setButtonStyleAsync("light");
+    }
 
     useEffect(() => {
         if (themeData?.mode === 'device' && themeData?.value !== deviceTheme) {
@@ -28,40 +36,44 @@ const MainAppNavigation = () => {
         }
     }, [deviceTheme])
 
+    useEffect(() => {
+        setNavigationBarColor()
+    }, [])
+
     return (
         <Stack.Navigator
             screenOptions={{
                 headerShown: false,
-                // animation: 'slide_from_right',
+                animation: 'slide_from_right',
                 detachPreviousScreen: false,
-                ...TransitionPresets.SlideFromRightIOS, // Use SlideFromRightIOS transition preset
-                cardStyleInterpolator: ({ current, layouts }) => ({
-                    cardStyle: {
-                        transform: [
-                            {
-                                translateX: current.progress.interpolate({
-                                    inputRange: [0, 1],
-                                    outputRange: [layouts.screen.width, 0],
-                                }),
-                            },
-                        ],
-                    },
-                    gestureDirection: 'horizontal',
-                    transitionSpec: {
-                        open: {
-                            animation: 'timing',
-                            config: {
-                                duration: 100, // Faster duration for faster transition
-                            },
-                        },
-                        close: {
-                            animation: 'timing',
-                            config: {
-                                duration: 100, // Faster duration for faster transition
-                            },
-                        },
-                    },
-                }),
+                // ...TransitionPresets.SlideFromRightIOS, // Use SlideFromRightIOS transition preset
+                // cardStyleInterpolator: ({ current, layouts }) => ({
+                //     cardStyle: {
+                //         transform: [
+                //             {
+                //                 translateX: current.progress.interpolate({
+                //                     inputRange: [0, 1],
+                //                     outputRange: [layouts.screen.width, 0],
+                //                 }),
+                //             },
+                //         ],
+                //     },
+                //     gestureDirection: 'horizontal',
+                //     transitionSpec: {
+                //         open: {
+                //             animation: 'timing',
+                //             config: {
+                //                 duration: 100, // Faster duration for faster transition
+                //             },
+                //         },
+                //         close: {
+                //             animation: 'timing',
+                //             config: {
+                //                 duration: 100, // Faster duration for faster transition
+                //             },
+                //         },
+                //     },
+                // }),
             }}
         >
             <Stack.Screen name="HomeScreen" component={HomeScreen} />

@@ -3,11 +3,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { colors } from '../utils/Theme'
 import { Camera, useCameraDevice } from 'react-native-vision-camera'
 import { useNavigation } from '@react-navigation/native'
+import useIsFocused from '../hooks/useIsFocused'
 
 const CameraScreen = () => {
 
 
-    const [isFrontCamera, setIsFrontCamera] = useState(false)
+    const [isFrontCamera, setIsFrontCamera] = useState(true)
     const [isFlashon, setIsFlashon] = useState(true)
     const [isLongPressed, setIsLongPressed] = useState(false)
 
@@ -19,6 +20,7 @@ const CameraScreen = () => {
     const cameraRef = useRef()
     const navigation = useNavigation()
     const { navigate } = useNavigation()
+    const isFocused = useIsFocused()
 
 
 
@@ -95,11 +97,11 @@ const CameraScreen = () => {
         <View style={{ flex: 1, backgroundColor: colors.black, }}>
 
             <View style={{ flex: 1 }}>
-                {device &&
+                {device && isFocused &&
                     <Camera
                         style={{ flex: 1 }}
                         device={device}
-                        isActive={true}
+                        isActive={isFocused}
                         photo={true}
                         video={true}
                     />

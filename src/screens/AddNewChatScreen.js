@@ -72,7 +72,7 @@ const AddNewChatScreen = () => {
                     autoFocus={true}
                     placeholderTextColor={colors.paperClip}
                     onChangeText={(text) => setTitle(text)}
-                    style={{ width: sizes.width * 0.7, height: 35, fontSize: 16, marginTop: 50, color: colors.white, borderBottomWidth: 2, borderColor: colors.createNewChatButton, }}
+                    style={{ width: sizes.width * 0.7, height: 35, fontSize: 16, padding: 0, marginTop: 50, color: colors.white, borderBottomWidth: 2, borderColor: colors.createNewChatButton, }}
                 />
 
 

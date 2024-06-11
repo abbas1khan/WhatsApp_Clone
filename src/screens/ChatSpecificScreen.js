@@ -338,13 +338,13 @@ const ChatSpecificScreen = () => {
 
 
     return (
-        <View style={{ flex: 1, backgroundColor: colors.chatBackground, }}>
+        <View style={{ flex: 1, backgroundColor: colors.background, }}>
 
 
 
 
             {/* ------------------------- Header ------------------------ */}
-            <View style={{ height: 56, backgroundColor: colors.header, }}>
+            <View style={{ height: 56 }}>
 
                 {selectedMessages?.length > 0 ?
                     <View style={{ width: '100%', height: '100%', flexDirection: 'row', justifyContent: "space-between", }}>

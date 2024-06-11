@@ -7,28 +7,15 @@ import { PersistGate } from 'redux-persist/integration/react';
 import MainAppNavigation from './src/navigation/MainAppNavigation';
 import { colors } from './src/utils/Theme';
 import { store } from './src/redux/store';
-import * as NavigationBar from 'expo-navigation-bar';
-import { useEffect } from 'react';
 import { PaperProvider } from 'react-native-paper';
 
 export default function App() {
 
   let persister = persistStore(store)
 
-
-  async function setNavigationBarColor() {
-    NavigationBar.setBackgroundColorAsync(colors.header);
-    NavigationBar.setButtonStyleAsync("light");
-  }
-
-  useEffect(() => {
-    setNavigationBarColor()
-  }, [])
-
-
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor={colors.header} barStyle="light-content" />
+      <StatusBar backgroundColor={colors.background} barStyle="light-content" />
       <SafeAreaProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persister}>

@@ -1,0 +1,69 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/HelveticaNeueBlack.otf",
+      "sha1": "1cfd5b59e8a2c42433874c9d38d7b3daeb74e6fb"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueBlackItalic.otf",
+      "sha1": "d9d8574a6268e3a9a61280ad266aea90f2891bba"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueBold.otf",
+      "sha1": "32a5639cbf87b4992575738e1f72578d7530744c"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueBoldItalic.otf",
+      "sha1": "cb203709a92b4b9f03c21c650592746a855192cf"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueHeavy.otf",
+      "sha1": "de70a16801a647e2a2157a7dd3832e29756f06a3"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueHeavyItalic.otf",
+      "sha1": "7879a0c065b62ac71f369b4bffb8ee4425340a52"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueItalic.ttf",
+      "sha1": "8081f356ced0ad5265c41c8b08e07fe2f1458f35"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueLight.otf",
+      "sha1": "6013aa8c5fb912f30e935a310c5fa203317d00d8"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueLightItalic.otf",
+      "sha1": "60551308f4bd22f8ec96ca7a49ae067f17668fb7"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueMedium.otf",
+      "sha1": "d46c2de0310e80f35934124d36a5556f08948700"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueMediumItalic.otf",
+      "sha1": "d2df0a24a6ef04ec121c07a8b929274e2eef36f1"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueRoman.otf",
+      "sha1": "8e7dc6cf7246db5e6dacf75c0f91e67ba70ab6b9"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueThin.otf",
+      "sha1": "623d2934160c3816be359f0cfb443deab769935f"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueThinItalic.otf",
+      "sha1": "2cfad870d95c40f8c3920a9c7f2dc53644523302"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueUltraLight.otf",
+      "sha1": "b06e239b40449bc372366eaf4e8200f223642673"
+    },
+    {
+      "path": "src/assets/fonts/HelveticaNeueUltraLightItalic.otf",
+      "sha1": "906ed4cfe0d2cea212f64354be1e5453d6fb7883"
+    }
+  ]
+}
