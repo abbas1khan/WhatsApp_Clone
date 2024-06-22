@@ -265,7 +265,7 @@ const ChatSpecificScreen = () => {
                 const index = prevSelectedMessages?.findIndex((selectedItem) => selectedItem?.messageId === item?.messageId);
                 if (index !== -1) {
                     // If item is already selected, deselect it
-                    return prevSelectedMessages?.filter((selectedItem) => selectedItem?.messageId !== item?.messageId);
+                    return prevSelectedMessages?.filter((_, i) => i !== index)
                 } else {
                     // If item is not selected, select it
                     return [...prevSelectedMessages, item];
